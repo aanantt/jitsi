@@ -23,16 +23,17 @@
  * TODO: when the old filmstrip has been removed, remove the "new-" prefix.
  */
 .new-toolbox {
-    top: -100px;
-    right: 16px;
-    position: absolute;
-    transition: top .3s ease-in;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: fixed;
+    transition: bottom .3s ease-in;
     width: auto;
     pointer-events: none;
     z-index: $toolbarZ + 2;
 
     &.shift-up {
-        top: -100px;
+        bottom: 60px;
 
         .toolbox-content {
             margin-bottom: 0;
@@ -40,7 +41,7 @@
     }
 
     &.visible {
-        top: 16px;
+        bottom: 20px;
     }
 
     &.no-buttons {
