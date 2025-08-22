@@ -82,7 +82,7 @@ const Whiteboard = (props: WithTranslation): JSX.Element => {
             } else {
                 width = videoSpaceWidth;
             }
-            height = clientHeight - getToolboxHeight();
+            height = clientHeight; // Toolbar is now at top-right, not affecting vertical space
         } else {
             if (filmstripVisible) {
                 height = clientHeight - Filmstrip.getFilmstripHeight();

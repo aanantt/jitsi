@@ -267,7 +267,10 @@ function getDevServerConfig() {
         static: {
             directory: process.cwd(),
             watch: {
-                ignored: file => file.endsWith('.log')
+                ignored: [
+                    '**/node_modules/**',
+                    '**/*.log'
+                ]
             }
         }
     };
@@ -293,6 +296,9 @@ module.exports = (_env, argv) => {
                 'app.bundle': './app.js'
             },
             devServer: isProduction ? {} : getDevServerConfig(),
+            watchOptions: {
+                ignored: /node_modules/
+            },
             plugins: [
                 ...config.plugins,
                 ...getBundleAnalyzerPlugin(analyzeBundle, 'app'),

@@ -30,27 +30,27 @@ export const THRESHOLDS = [
     },
     {
         width: 565,
-        order: [ 'microphone', 'camera', 'desktop', 'chat', 'raisehand', 'reactions', 'participants-pane', 'tileview' ]
+        order: [ 'microphone', 'camera', 'desktop', 'raisehand', 'reactions' ] // Removed chat, participants-pane, tileview
     },
     {
         width: 520,
-        order: [ 'microphone', 'camera', 'desktop', 'chat', 'raisehand', 'participants-pane', 'tileview' ]
+        order: [ 'microphone', 'camera', 'desktop', 'raisehand' ] // Removed chat, participants-pane, tileview
     },
     {
         width: 470,
-        order: [ 'microphone', 'camera', 'desktop', 'chat', 'raisehand', 'participants-pane' ]
+        order: [ 'microphone', 'camera', 'desktop', 'raisehand' ] // Removed chat, participants-pane
     },
     {
         width: 420,
-        order: [ 'microphone', 'camera', 'desktop', 'chat', 'participants-pane' ]
+        order: [ 'microphone', 'camera', 'desktop' ] // Removed chat, participants-pane
     },
     {
         width: 370,
-        order: [ 'microphone', 'camera', 'chat', 'participants-pane' ]
+        order: [ 'microphone', 'camera' ] // Removed chat, participants-pane
     },
     {
         width: 225,
-        order: [ 'microphone', 'camera', 'chat' ]
+        order: [ 'microphone', 'camera' ] // Removed chat
     },
     {
         width: 200,
@@ -201,14 +201,14 @@ export const NATIVE_TOOLBAR_BUTTONS: NativeToolbarButton[] = [
  * The toolbar buttons to show when in visitors mode.
  */
 export const VISITORS_MODE_BUTTONS: ToolbarButton[] = [
-    'chat',
+    // 'chat', // Removed
     'closedcaptions',
     'fullscreen',
     'hangup',
-    'participants-pane',
+    // 'participants-pane', // Removed
     'raisehand',
     'settings',
-    'stats',
-    'tileview',
-    'videoquality'
+    'stats'
+    // 'tileview', // Removed
+    // 'videoquality' // Removed
 ];

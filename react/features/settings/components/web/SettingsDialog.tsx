@@ -265,16 +265,17 @@ function _mapStateToProps(state: IReduxState, ownProps: any) {
         });
     }
 
-    if (showProfileSettings) {
-        tabs.push({
-            name: SETTINGS_TABS.PROFILE,
-            component: ProfileTab,
-            labelKey: 'profile.title',
-            props: getProfileTabProps(state),
-            submit: submitProfileTab,
-            icon: IconUser
-        });
-    }
+    // Profile tab hidden
+    // if (showProfileSettings) {
+    //     tabs.push({
+    //         name: SETTINGS_TABS.PROFILE,
+    //         component: ProfileTab,
+    //         labelKey: 'profile.title',
+    //         props: getProfileTabProps(state),
+    //         submit: submitProfileTab,
+    //         icon: IconUser
+    //     });
+    // }
 
     if (showCalendarSettings && !_iAmVisitor) {
         tabs.push({

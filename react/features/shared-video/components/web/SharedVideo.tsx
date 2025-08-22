@@ -88,7 +88,7 @@ class SharedVideo extends Component<IProps> {
             } else {
                 width = `${clientWidth}px`;
             }
-            height = `${clientHeight - getToolboxHeight()}px`;
+            height = `${clientHeight}px`; // Toolbar is now at top-right, not affecting vertical space
         } else {
             if (filmstripVisible) {
                 height = `${clientHeight - Filmstrip.getFilmstripHeight()}px`;

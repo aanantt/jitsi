@@ -23,25 +23,24 @@
  * TODO: when the old filmstrip has been removed, remove the "new-" prefix.
  */
 .new-toolbox {
-    bottom: calc((#{$newToolbarSize} * 2) * -1);
-    left: 0;
+    top: -100px;
+    right: 16px;
     position: absolute;
-    right: 0;
-    transition: bottom .3s ease-in;
-    width: 100%;
+    transition: top .3s ease-in;
+    width: auto;
     pointer-events: none;
     z-index: $toolbarZ + 2;
 
     &.shift-up {
-        bottom: calc(((#{$newToolbarSize} + 30px) * 2) * -1);
+        top: -100px;
 
         .toolbox-content {
-            margin-bottom: 46px;
+            margin-bottom: 0;
         }
     }
 
     &.visible {
-        bottom: 0;
+        top: 16px;
     }
 
     &.no-buttons {
@@ -53,13 +52,18 @@
     align-items: center;
     box-sizing: border-box;
     display: flex;
-    margin-bottom: 16px;
+    margin-bottom: 0;
     position: relative;
     z-index: $toolbarZ;
     pointer-events: none;
 
     .toolbox-button-wth-dialog {
         display: inline-block;
+        
+        // Adjust margin for horizontal layout
+        &:last-of-type:not(.hangup-button) {
+            margin-right: 4px !important; // Reduced margin before hangup button in horizontal layout
+        }
     }
 }
 
@@ -80,20 +84,32 @@
 
 .toolbox-content-wrapper {
     display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    max-width: 100%;
+    flex-direction: row; // Back to row for horizontal layout
+    margin: 0;
+    max-width: none;
+    width: fit-content; // Adjust width to content
     pointer-events: all;
-    border-radius: 6px;
+    border-radius: 40px; // Increased border radius for more rounded toolbar
+    background: rgba(255, 255, 255, 0.05); // Very light white shadow-like color for toolbar background
+    backdrop-filter: blur(10px); // Add blur effect for better visibility
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); // Add shadow to toolbar
 
     .toolbox-content-items {
         @include ltr;
+        border-radius: 40px; // Match the wrapper border radius
+        background: transparent; // Make items background transparent
+        padding: 10px 20px; // Horizontal padding for row layout
+        display: flex !important;
+        flex-direction: row !important; // Buttons in a row - force horizontal
+        align-items: center !important;
+        gap: 8px; // Increased gap for better spacing
+        justify-content: flex-end !important;
     }
 }
 
 .toolbox-content-wrapper::after {
     content: '';
-    background: $newToolbarBackgroundColor;
+    background: transparent; // Make after element transparent
     padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
@@ -105,14 +121,27 @@
 
 div.hangup-button {
     background-color: #CB2233;
+    border-radius: 24px;
+    margin: 0 6px; // Horizontal margin for row layout
+    box-shadow: 0px 4px 8px rgba(203, 34, 51, 0.4), 
+                0px 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0px 1px 0px rgba(255, 255, 255, 0.2); // 3D shadow with red tint
+    transition: all 0.2s ease;
 
     @media (hover: hover) and (pointer: fine) {
         &:hover {
             background-color: #E04757;
+            box-shadow: 0px 6px 12px rgba(224, 71, 87, 0.5), 
+                        0px 3px 6px rgba(0, 0, 0, 0.4),
+                        inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         &:active {
             background-color: #A21B29;
+            box-shadow: 0px 2px 4px rgba(162, 27, 41, 0.4),
+                        inset 0px 2px 4px rgba(0, 0, 0, 0.3);
+            transform: translateY(0px);
         }
     }
 
@@ -123,14 +152,27 @@ div.hangup-button {
 
 div.hangup-menu-button {
     background-color: #CB2233;
+    border-radius: 24px;
+    margin: 0 6px; // Horizontal margin for row layout
+    box-shadow: 0px 4px 8px rgba(203, 34, 51, 0.4), 
+                0px 2px 4px rgba(0, 0, 0, 0.3),
+                inset 0px 1px 0px rgba(255, 255, 255, 0.2); // 3D shadow with red tint
+    transition: all 0.2s ease;
 
     @media (hover: hover) and (pointer: fine) {
         &:hover {
             background-color: #E04757;
+            box-shadow: 0px 6px 12px rgba(224, 71, 87, 0.5), 
+                        0px 3px 6px rgba(0, 0, 0, 0.4),
+                        inset 0px 1px 0px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         &:active {
             background-color: #A21B29;
+            box-shadow: 0px 2px 4px rgba(162, 27, 41, 0.4),
+                        inset 0px 2px 4px rgba(0, 0, 0, 0.3);
+            transform: translateY(0px);
         }
     }
 
@@ -159,38 +201,98 @@ div.hangup-menu-button {
 }
 
 /**
+ * Style for all toolbar buttons to have rounded corners and 3D shadow effect
+ */
+.toolbox-button {
+    margin: 0 6px; // Horizontal margin between buttons for row layout
+    
+    &:first-child {
+        margin-left: 0; // Remove left margin from first button
+    }
+    
+    &:last-child {
+        margin-right: 0; // Remove right margin from last button
+    }
+    
+    .toolbox-icon {
+        border-radius: 24px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4), 
+                    0px 2px 4px rgba(0, 0, 0, 0.3),
+                    inset 0px 1px 0px rgba(255, 255, 255, 0.1); // 3D shadow effect
+        transition: all 0.2s ease;
+        
+        &.toggled {
+            border-radius: 24px;
+            box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.5),
+                        inset 0px -1px 0px rgba(255, 255, 255, 0.1); // Pressed effect
+            transform: translateY(1px); // Slight press down effect
+        }
+        
+        &:hover {
+            border-radius: 24px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.5), 
+                        0px 3px 6px rgba(0, 0, 0, 0.4),
+                        inset 0px 1px 0px rgba(255, 255, 255, 0.2); // Enhanced shadow on hover
+            transform: translateY(-2px); // Lift effect on hover
+        }
+        
+        &:active {
+            border-radius: 24px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4),
+                        inset 0px 2px 4px rgba(0, 0, 0, 0.3); // Pressed in effect
+            transform: translateY(0px);
+        }
+        
+        &:focus {
+            border-radius: 24px;
+            outline: none;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4), 
+                        0px 2px 4px rgba(0, 0, 0, 0.3),
+                        0px 0px 0px 2px rgba(70, 130, 230, 0.5), // Focus ring
+                        inset 0px 1px 0px rgba(255, 255, 255, 0.1);
+        }
+    }
+}
+
+/**
  * Audio and video buttons do not have toggled state.
  */
 .audio-preview,
 .video-preview {
     .toolbox-icon.toggled {
         background: none;
+        border-radius: 24px;
 
         &:hover {
             background: rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
         }
     }
 
 }
 
 /**
- * On small mobile devices make the toolbar full width and pad the invite prompt.
+ * On small mobile devices keep toolbar horizontal at top right but make it more compact.
  */
 .toolbox-content-mobile {
     @media (max-width: 500px) {
         margin-bottom: 0;
 
         .toolbox-content-wrapper {
-            width: 100%;
+            width: auto;
+            border-radius: 30px;
         }
 
         .toolbox-content-items {
             @include ltr;
-            border-radius: 0;
+            border-radius: 30px;
             display: flex;
-            justify-content: space-evenly;
-            padding: 8px 0;
-            width: 100%;
+            flex-direction: row; // Keep horizontal on mobile
+            align-items: center;
+            justify-content: flex-end;
+            padding: 6px 12px; // Compact padding for mobile
+            width: auto;
+            gap: 4px; // Smaller gap on mobile
         }
 
         .invite-more-container {

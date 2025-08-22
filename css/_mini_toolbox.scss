@@ -9,13 +9,16 @@
         padding: 7px;
         width: 22px;
         height : 22px;
+        border-radius: 24px;
 
         &.toggled {
             background: none;
+            border-radius: 24px;
         }
 
         &.disabled {
             cursor: initial;
+            border-radius: 24px;
         }
     }
 }

@@ -51,8 +51,10 @@
 
 .new-toolbox .toolbox-content .toolbox-icon.toggled.security-toolbar-button {
     border-width: 0;
+    border-radius: 24px;
 
     &:not(:hover) {
         background: unset;
+        border-radius: 24px;
     }
 }

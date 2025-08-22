@@ -298,21 +298,21 @@ export function useToolboxButtons(
         camera,
         profile,
         desktop: desktopSharing,
-        chat,
+        // chat, // Removed chat button
         raisehand,
         reactions,
-        'participants-pane': participants,
-        invite,
-        tileview,
+        // 'participants-pane': participants, // Removed participants button
+        // invite, // Removed invite button
+        // tileview, // Removed tile view button
         'toggle-camera': toggleCameraButton,
-        videoquality: videoQuality,
+        // videoquality: videoQuality, // Removed video quality (performance settings) button
         fullscreen: _fullscreen,
-        security,
+        // security, // Removed security button
         closedcaptions: cc,
         recording,
         livestreaming: liveStreaming,
         linktosalesforce,
-        sharedvideo: shareVideo,
+        // sharedvideo: shareVideo, // Removed share video button
         shareaudio,
         noisesuppression: noiseSuppression,
         whiteboard,

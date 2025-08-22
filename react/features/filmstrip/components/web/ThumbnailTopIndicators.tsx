@@ -102,6 +102,7 @@ const ThumbnailTopIndicators = ({
     if (isVirtualScreenshareParticipant) {
         return (
             <div className = { styles.container }>
+                {/* Removed ConnectionIndicator for screenshare participants
                 {!_connectionIndicatorDisabled
                     && <ConnectionIndicator
                         alwaysVisible = { showConnectionIndicator }
@@ -110,6 +111,7 @@ const ThumbnailTopIndicators = ({
                         participantId = { participantId }
                         statsPopoverPosition = { STATS_POPOVER_POSITION[thumbnailType] } />
                 }
+                */}
             </div>
         );
     }
@@ -122,6 +124,7 @@ const ThumbnailTopIndicators = ({
                 iconSize = { _indicatorIconSize }
                 participantId = { participantId }
                 tooltipPosition = { tooltipPosition } />
+            {/* Removed ConnectionIndicator for regular participants
             {!_connectionIndicatorDisabled
                 && <ConnectionIndicator
                     alwaysVisible = { showConnectionIndicator }
@@ -130,6 +133,7 @@ const ThumbnailTopIndicators = ({
                     participantId = { participantId }
                     statsPopoverPosition = { STATS_POPOVER_POSITION[thumbnailType] } />
             }
+            */}
             <RaisedHandIndicator
                 iconSize = { _indicatorIconSize }
                 participantId = { participantId }

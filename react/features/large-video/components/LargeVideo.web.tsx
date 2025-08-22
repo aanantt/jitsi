@@ -7,7 +7,6 @@ import { IReduxState, IStore } from '../../app/types';
 import { isDisplayNameVisible } from '../../base/config/functions.web';
 import { VIDEO_TYPE } from '../../base/media/constants';
 import { getLocalParticipant } from '../../base/participants/functions';
-import Watermarks from '../../base/react/components/web/Watermarks';
 import { getHideSelfView } from '../../base/settings/functions.any';
 import { getVideoTrackByParticipant } from '../../base/tracks/functions.web';
 import { setColorAlpha } from '../../base/util/helpers';
@@ -220,8 +219,6 @@ class LargeVideo extends Component<IProps> {
                 <SharedVideo />
                 {_whiteboardEnabled && <Whiteboard />}
                 <div id = 'etherpad' />
-
-                <Watermarks />
 
                 <div
                     id = 'dominantSpeaker'
